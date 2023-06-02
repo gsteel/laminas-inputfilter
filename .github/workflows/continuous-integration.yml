@@ -9,3 +9,20 @@ on:
 jobs:
   ci:
     uses: laminas/workflow-continuous-integration/.github/workflows/continuous-integration.yml@1.x
+
+  psalm-security-report:
+    name: Psalm Security Report
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: shivammathur/setup-php@2.25.2
+        with:
+          php-version: "8.2"
+      - uses: "ramsey/composer-install@2.2.0"
+      - name: "Psalm"
+        continue-on-error: true
+        run: vendor/bin/psalm --report=results.sarif --ignore-baseline
+      - name: "Upload Security Analysis results to GitHub"
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: results.sarif
