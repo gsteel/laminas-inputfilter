@@ -10,7 +10,7 @@ use Laminas\InputFilter\InputInterface;
 
 final class InputFilterPluginManagerType
 {
-    public function __construct(private InputFilterPluginManager $manager)
+    public function __construct(private readonly InputFilterPluginManager $manager)
     {
     }
 
