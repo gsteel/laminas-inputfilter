@@ -112,7 +112,7 @@ class OptionalInputFilterTest extends TestCase
             $inputFilter->getValues();
             self::fail('No exception was thrown');
         // TODO: issue #143 narrow which exception should be thrown
-        } catch (Exception $exception) {
+        } catch (Exception) {
             self::assertTrue(true);
         }
     }

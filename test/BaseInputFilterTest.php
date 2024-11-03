@@ -801,17 +801,8 @@ class BaseInputFilterTest extends TestCase
          * @param array<string, string> $msg
          * @return callable(): InputInterface
          */
-        $input = function (
-            string $iName,
-            bool $required,
-            bool $bOnFail,
-            bool $isValid,
-            array $msg = []
-        ) use (
-            $vRaw,
-            $vFiltered
-        ): callable {
-            return fn(array|null|string $context): InputInterface => self::createInputInterfaceMock(
+        $input = fn(string $iName, bool $required, bool $bOnFail, bool $isValid, array $msg = []): callable =>
+            fn(array|null|string $context): InputInterface => self::createInputInterfaceMock(
                 $iName,
                 $required,
                 $isValid,
@@ -821,7 +812,6 @@ class BaseInputFilterTest extends TestCase
                 $msg,
                 $bOnFail
             );
-        };
 
         $inputFilter = fn(bool $isValid, array $msg = []): callable =>
             function () use ($isValid, $vRaw, $vFiltered, $msg): InputFilterInterface {
