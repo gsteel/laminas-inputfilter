@@ -284,7 +284,7 @@ class Factory
     /**
      * Factory for input filters
      *
-     * phpcs:ignore Generic.Files.LineLength.TooLong
+     * phpcs:ignore Generic.Files.LineLength.TooLong, SlevomatCodingStandard.Commenting.DocCommentSpacing
      * @param InputFilterSpecification|CollectionSpecification|Traversable|InputFilterProviderInterface $inputFilterSpecification
      * @return InputFilterInterface
      * @throws Exception\RuntimeException
